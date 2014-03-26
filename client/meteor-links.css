@@ -37,35 +37,17 @@ body, input {
 .edit {
     background: none;
     color: #333;
+    margin: 5px;
     border: 1px dashed #999;
 }
-.editing {
-    cursor: pointer;
-    float: left;
-    margin: 5px;
-    padding: 2px 7px;
-    font-size: 80%;
-    font-weight: bold;
-    background: #999;
-    color: #fff;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -o-border-radius: 4px;
-
-    opacity: 1;
-    transition: opacity 0.3s linear;
-    -moz-transition: opacity 0.3s linear;
-    -webkit-transition: opacity 0.3s linear;
-    -o-transition: opacity 0.3s linear;
-
-    position: relative;
+.editing,.editing:hover {
+    border: 2px solid #999;
 }
 
 input {
     font-size: 100%;
 }
-
+/*
 a, a:visited, a:active {
     color: #258;
 }
@@ -277,3 +259,4 @@ a, a:visited, a:active {
     width: 80px;
 }
 
+*/

@@ -1,6 +1,6 @@
 Links = new Meteor.Collection('links');
 
-// Session.set("selected-item", null);
+Session.set("selected-item", null);
 
 Meteor.subscribe('links');
 
@@ -10,7 +10,7 @@ Template.list_links.links = function() {
 };
 
 Template.link_item.edit = function() {
-  return Session.equals("selected-item", this._id) ? "editing" : "edit";
+  return Session.equals("selected-item", this._id) ? "edit editing" : "edit";
 }
 Template.link_item.id = function() { return this._id; }
 

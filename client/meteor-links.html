@@ -5,9 +5,9 @@
 <body>
   <div class="container" style="margin: 5%">
     {{> new_item}}
-    <ul id="item-list">
-      {{> list_links}}
-    </ul>
+    
+    {{> list_links}}
+
   </div>
 </body>
 
@@ -33,16 +33,16 @@
 
 
 <template name="link_item">
-  <li>
+  <div style="border: 1px solid #999; margin-bottom: 1em; padding: 0.5em;">
     
-    <div class="row">
-      <a class="btn btn-lg btn-info col-xs-10" href="{{url}}">{{title}}</a>
-      <button class="col-xs-1 {{edit}}">edit</button>
+    <div class="row" style="padding-left: 1em; padding-right: 1em;">
+      <a class="btn btn-info" href="{{url}}">{{title}}</a>
+      <button class="btn btn-sm pull-right {{edit}}">edit</button>
     </div>
-
+    
     {{> item_detail}}
   
-  </li>
+  </div>
 </template>
 
 
