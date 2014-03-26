@@ -1,0 +1,75 @@
+<head>
+  <title>meteor-links</title>
+</head>
+
+<body>
+  <div class="container" style="margin: 5%">
+    {{> new_item}}
+    <ul id="item-list">
+      {{> list_links}}
+    </ul>
+  </div>
+</body>
+
+
+<template name="new_item">
+  <div style="margin-bottom: 0.5em;">
+    <div class="input-group input-group-lg">
+      <input type="text" class="form-control" placeholder="title" id="title_box">
+    </div>
+    <div class="input-group input-group-sm">
+      <input type="text" class="form-control" placeholder="url" id="url_box">
+    </div>
+    <button>Add</button>
+  </div>
+</template>
+
+
+<template name="list_links">
+  {{#each links}}
+    {{> link_item}}
+  {{/each}}
+</template>
+
+
+<template name="link_item">
+  <li>
+    
+    <div class="row">
+      <a class="btn btn-lg btn-info col-xs-10" href="{{url}}">{{title}}</a>
+      <button class="col-xs-1 {{edit}}">edit</button>
+    </div>
+
+    {{> item_detail}}
+  
+  </li>
+</template>
+
+
+<template name="item_detail">
+  <div class="container">
+    {{#if editing}}
+      
+      <div class="input-group">
+        <span class="input-group-addon">title</span>
+        <input id="edit_title" type="text" class="form-control" placeholder="title" value="{{title}}">
+        <span class="input-group-addon">copy</span>
+      </div>
+      
+      <div class="input-group">
+        <span class="input-group-addon">url</span>
+        <input id="edit_url" type="text" class="form-control" placeholder="url" value="{{url}}">
+        <span class="input-group-addon">copy</span>
+      </div>
+      
+      <div class="text-center row">
+        <button class="btn btn-defaul save">Save</button>
+        <button class="btn btn-defaul destroy">X</button>
+      </div>
+    
+    {{else}}
+      <span class="url-display">{{url}}</span>
+    
+    {{/if}}
+  </div>
+</template>
