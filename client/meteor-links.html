@@ -1,5 +1,9 @@
 <head>
   <title>meteor-links</title>
+  <script src="ZeroClipboard.min.js"></script>
+  <style>
+    button[data-clipboard-text]: { background: red; }
+  </style>
 </head>
 
 <body>
@@ -49,27 +53,29 @@
 <template name="item_detail">
   <div class="container">
     {{#if editing}}
-      
-      <div class="input-group">
-        <span class="input-group-addon">title</span>
-        <input id="edit_title" type="text" class="form-control" placeholder="title" value="{{title}}">
-        <span class="input-group-addon">copy</span>
-      </div>
-      
-      <div class="input-group">
-        <span class="input-group-addon">url</span>
-        <input id="edit_url" type="text" class="form-control" placeholder="url" value="{{url}}">
-        <span class="input-group-addon">copy</span>
-      </div>
-      
-      <div class="text-center row">
-        <button class="btn btn-defaul save">Save</button>
-        <button class="btn btn-defaul destroy">X</button>
-      </div>
-    
+      {{> editing_panel}}
     {{else}}
       <span class="url-display">{{url}}</span>
-    
     {{/if}}
+  </div>
+</template>
+
+
+<template name="editing_panel">
+  <div class="input-group">
+    <span class="input-group-addon">title</span>
+    <input id="edit_title" type="text" class="form-control" placeholder="title" value="{{title}}">
+    <button id="copyTitle" data-clipboard-text="{{title}}">copy</button>
+  </div>
+  
+  <div class="input-group">
+    <span class="input-group-addon">url</span>
+    <input id="edit_url" type="text" class="form-control" placeholder="url" value="{{url}}">
+    <button id="copyUrl" data-clipboard-text="{{url}}">copy</button>
+  </div>
+  
+  <div class="text-center row" style="margin: 10px;">
+    <button class="btn btn-defaul save">Save</button>
+    <button class="btn btn-defaul destroy">X</button>
   </div>
 </template>
