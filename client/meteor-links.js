@@ -1,6 +1,6 @@
 Links = new Meteor.Collection('links');
 
-Session.set("selected-item", null);
+// Session.set("selected-item", null);
 
 Meteor.subscribe('links');
 
@@ -89,6 +89,7 @@ function updateLinkItem() {
 function copyToClipboard(id) {
   var clipboard = new ZeroClipboard( document.getElementById(id) );
   clipboard.on( "load", function(clipboard) {
+    alert("load");
     clipboard.on( "complete", function(clipboard, args) {
       alert( args.text );
     } );

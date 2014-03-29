@@ -35,17 +35,33 @@ body, input {
 }
 
 .edit {
-    background: none;
-    color: #333;
-    margin: 5px;
-    border: 1px dashed #999;
+    
 }
 .editing,.editing:hover {
     border: 2px solid #999;
 }
 
+.btn-transparent {
+    background: none;
+    color: #333;
+    margin: 5px;
+    border: 1px dashed #999;
+}
+
 input {
     font-size: 100%;
+}
+
+.input-group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.input-group-addon:first-child {
+    min-width: 51px;
+}
+.input-addon-transparent {
+    padding: 0px;
+    border: none;
 }
 /*
 a, a:visited, a:active {

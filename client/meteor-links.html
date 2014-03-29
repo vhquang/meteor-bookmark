@@ -1,8 +1,8 @@
 <head>
   <title>meteor-links</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="ZeroClipboard.min.js"></script>
   <style>
-    button[data-clipboard-text]: { background: red; }
   </style>
 </head>
 
@@ -41,7 +41,7 @@
     
     <div class="row" style="padding-left: 1em; padding-right: 1em;">
       <a class="btn btn-info" href="{{url}}">{{title}}</a>
-      <button class="btn btn-sm pull-right {{edit}}">edit</button>
+      <button class="btn btn-sm pull-right btn-transparent {{edit}}">edit</button>
     </div>
     
     {{> item_detail}}
@@ -65,16 +65,20 @@
   <div class="input-group">
     <span class="input-group-addon">title</span>
     <input id="edit_title" type="text" class="form-control" placeholder="title" value="{{title}}">
-    <button id="copyTitle" data-clipboard-text="{{title}}">copy</button>
+    <span class="input-group-addon input-addon-transparent">
+      <button id="copyTitle" data-clipboard-text="{{title}}" class="btn-transparent">copy</button>
+    </span>
   </div>
-  
+
   <div class="input-group">
     <span class="input-group-addon">url</span>
     <input id="edit_url" type="text" class="form-control" placeholder="url" value="{{url}}">
-    <button id="copyUrl" data-clipboard-text="{{url}}">copy</button>
+    <span class="input-group-addon input-addon-transparent">
+      <button id="copyUrl" data-clipboard-text="{{url}}" class="btn-transparent">copy</button>
+    </span>
   </div>
   
-  <div class="text-center row" style="margin: 10px;">
+  <div class="text-center row" style="">
     <button class="btn btn-defaul save">Save</button>
     <button class="btn btn-defaul destroy">X</button>
   </div>
