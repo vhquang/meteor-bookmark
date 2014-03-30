@@ -10,10 +10,19 @@
   <div class="container" style="margin: 5%">
     {{> new_item}}
     
-    {{> list_links}}
+    {{> main_panel}}
 
   </div>
 </body>
+
+
+<template name="main_panel">
+  {{#if loading}}
+    <div style="text-align: center; color: #2483A1; font-size: larger; padding: 2em;">Loading...</div>
+  {{else}}
+    {{> list_links}}
+  {{/if}}
+</template>
 
 
 <template name="new_item">
@@ -24,7 +33,7 @@
     <div class="input-group input-group-sm">
       <input type="text" class="form-control" placeholder="url" id="url_box">
     </div>
-    <button>Add</button>
+    <button class="btn btn-primary">Add</button>
   </div>
 </template>
 
@@ -55,7 +64,7 @@
     {{#if editing}}
       {{> editing_panel}}
     {{else}}
-      <span class="url-display">{{url}}</span>
+      <span class="url-display">{{displayUrl}}</span>
     {{/if}}
   </div>
 </template>

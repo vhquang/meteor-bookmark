@@ -2,9 +2,13 @@ Links = new Meteor.Collection('links');
 
 // Session.set("selected-item", null);
 
-Meteor.subscribe('links');
+var listHandle = Meteor.subscribe('links');
 
 
+Template.main_panel.loading = function() {
+  return !listHandle.ready();
+}
+;
 Template.list_links.links = function() {
   return Links.find( {}, {sort:{created_at: -1}} ).fetch();
 };
@@ -13,8 +17,10 @@ Template.list_links.links = function() {
 
 Template.link_item.edit = function() {
   return Session.equals("selected-item", this._id) ? "edit editing" : "edit";
-}
-Template.link_item.id = function() { return this._id; }
+};
+Template.link_item.id = function() { 
+  return this._id; 
+};
 
 Template.link_item.events({
   
@@ -40,6 +46,13 @@ Template.link_item.events({
 Template.item_detail.editing = function() {
   return Session.equals("selected-item", this._id);
 };
+Template.item_detail.displayUrl = function() {
+  var url = this.url;
+  if (!url) { return ""; }
+  url = url.indexOf("//") > 0 ? url.substr(url.indexOf("//") + 2) : url;
+  url = url.indexOf("/") > 0 ? url.substr(0, url.indexOf("/")) : url;
+  return url;
+}
 
 Template.item_detail.events({
   'click #copyTitle': function(evt) {
@@ -89,7 +102,6 @@ function updateLinkItem() {
 function copyToClipboard(id) {
   var clipboard = new ZeroClipboard( document.getElementById(id) );
   clipboard.on( "load", function(clipboard) {
-    alert("load");
     clipboard.on( "complete", function(clipboard, args) {
       alert( args.text );
     } );
