@@ -63,6 +63,10 @@ Template.item_detail.events({
   }
 });
 
+
+
+var isBrowserSupportFlash = detectflash();
+Template.editing_panel.supportFlash = isBrowserSupportFlash;
 Template.editing_panel.rendered = function() {
   if ( Session.equals("selected-item", this.data._id) ) {
     var buttons_list = this.findAll("button[data-clipboard-text]");
@@ -107,4 +111,21 @@ function copyToClipboard(id) {
     } );
 
   } );
+}
+
+/* copy from:
+   http://www.blangdon.com/writing/about/detect-flash-with-javascript/ */
+function detectflash(){
+  if (navigator.plugins != null && navigator.plugins.length > 0){
+    return navigator.plugins["Shockwave Flash"] && true;
+  }
+  if(~navigator.userAgent.toLowerCase().indexOf("webtv")){
+    return true;
+  }
+  if(~navigator.appVersion.indexOf("MSIE") && !~navigator.userAgent.indexOf("Opera")){
+    try{
+      return new ActiveXObject("ShockwaveFlash.ShockwaveFlash") && true;
+    } catch(e){}
+  }
+  return false;
 }
