@@ -2,7 +2,9 @@
 Links = new Meteor.Collection('links');
 
 Meteor.startup(function () {
+  
   Meteor.publish('links', function() {
     return Links.find();
   });
+
 });
